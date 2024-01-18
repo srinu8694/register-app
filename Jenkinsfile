@@ -40,5 +40,13 @@ pipeline {
               }
           }
        }
+
+        stage("quality Gate"){
+            steps{
+                script{
+                    waitForQualityGate abortPipeline: false, credentialsId: 'Jenkins-SQ-tocken'
+                }
+            }
+        }
     }
 }
